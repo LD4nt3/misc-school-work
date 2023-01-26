@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="COCONTESTA" icon="ui-icon-home" outcome="principal" />  
+                <p:menuitem value="Crear encuesta" icon="ui-icon-circle-plus" style="margin-left:10px;" action="num_preg"/>                         
+                <f:facet name="options">                   
+                    <p:commandButton type="button" value="Salir" icon="ui-icon-power" action="index"/>
+                </f:facet>      
+            </p:menubar>
+        </h:form>
+        <h:form>
+            <h:dataTable value="#{encuestraController.arrayCuestion[respuestasController.i]}" var="cuestion">
+                <h:column>
+                    <f:facet name="header">Encuesta</f:facet>
+                    #{cuestion.pregunta}
+                    <br></br>
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="0">
+                <p:outputLabel for="console" value="Respuesta:" />
+                <p:selectOneRadio id="console" value="#{respuestasController.resp}">
+                    <f:selectItems value="#{cuestion.opcion}" var="c" itemLabel="#{c}" itemValue="#{c}"/>
+            </p:selectOneRadio>
+                </h:panelGrid>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton action="#{respuestasController.guardar()}" value="Validar" /> 
+        </h:form>
+    </h:body>
+</html>

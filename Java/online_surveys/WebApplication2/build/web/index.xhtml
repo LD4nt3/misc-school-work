@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="COCONTESTA" icon="ui-icon-home"/>                          
+                <f:facet name="options">                   
+                    <p:commandButton type="button" value="Salir" icon="ui-icon-power" action="index" />
+                </f:facet>
+                <p:menuitem value="Crear encuesta" icon="ui-icon-circle-plus" iconPos="right" outcome="num_preg"/>      
+            </p:menubar>
+        </h:form>
+        <center>
+            <br></br>
+            <h:form>
+                <p>Ingrese el nombre de usuario: </p>
+                <p:inputText value="#{loginController.selected.usuario}" />
+                <br></br>
+                <br></br>
+                <p>Ingrese la contraseña: </p>
+                <h:inputSecret value="#{loginController.selected.contraseña}" />
+                <br></br>
+                <br></br>
+                <h:commandButton id="submit" style="margin-right:20px;" action="#{loginController.validar}" value="Ingresar"/>
+                <p:button value="Registrarse" style="margin-right:20px;" outcome="registro">
+                </p:button>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <p:button value="Contestar Encuesta" style="margin-right:20px;" outcome="fuera">
+                </p:button>
+            </h:form>
+        </center> 
+        <br />
+    </h:body>
+
+
+</html>
+

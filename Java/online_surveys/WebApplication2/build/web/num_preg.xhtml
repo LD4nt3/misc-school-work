@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crear</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="COCONTESTA" icon="ui-icon-home" action="principal"/> 
+                <f:facet name="options">                   
+                    <p:commandButton type="button" value="Salir" icon="ui-icon-power" action="index" />
+                </f:facet>                     
+            </p:menubar>
+        </h:form>
+        <center>
+            <br></br>
+        <h:form>
+                <p>Ingrese el nombre de la encuesta: </p>
+            <p:inputText value="#{encuestraController.selected.nombre}" />
+            <br></br>
+            <br></br>
+          <p>Ingrese el número de preguntas: </p>
+            <p:inputText value="#{encuestraController.selected.noPreguntas}" />
+            <br></br>
+            <br></br>
+            <p:commandButton id="submit" action="#{encuestraController.crear_encuesta}" value="Crear"/>
+        </h:form>
+        </center> 
+    </h:body>
+</html>

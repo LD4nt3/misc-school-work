@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inicio</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="COCONTESTA" icon="ui-icon-home" outcome="principal1" />  
+                <p:menuitem value="Crear encuesta" icon="ui-icon-circle-plus" style="margin-left:10px;" action="num_preg"/>                         
+                <f:facet name="options">                   
+                    <p:commandButton type="button" value="Salir" icon="ui-icon-power"/>
+                </f:facet>
+                     
+            </p:menubar>
+        </h:form>
+        <center>
+            <h1>Bienvenido a Cocontesta</h1>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <!--<h:outputText escape="false" value="#{bundle.ListEncuestaEmpty}" rendered="#{encuestaController.items.rowCount == 0}"/>-->
+                <h:panelGroup rendered="#{encuestaController.items.rowCount > 0}">
+                    <h:outputText value="#{encuestaController.pagination.pageFirstItem + 1}..#{encuestaController.pagination.pageLastItem + 1}/#{encuestaController.pagination.itemsCount}"/>;
+                    <h:commandLink action="#{encuestaController.previous}" value="#{bundle.Previous} #{encuestaController.pagination.pageSize}" rendered="#{encuestaController.pagination.hasPreviousPage}"/>;
+                    <h:commandLink action="#{encuestaController.next}" value="#{bundle.Next} #{encuestaController.pagination.pageSize}" rendered="#{encuestaController.pagination.hasNextPage}"/>;
+                    <h:dataTable value="#{encuestaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="No. preguntas"/>
+                            </f:facet>
+                            <h:outputText value="#{item.noPreguntas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Enlace"/>
+                            </f:facet>
+                            <h:outputText value="#{item.enlace}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Título"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=""/>
+                            </f:facet>
+                            <h:commandLink action="#" value="Ver"/>
+                            <h:outputText value=" - "/>
+                            <h:commandLink action="#" value="Editar"/>
+                            <h:outputText value=" - "/>
+                            <h:commandLink action="#{encuestaController.destroy}" value="Eliminar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+        </center>
+    </h:body>
+
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:menubar>
+                <p:menuitem value="COCONTESTA" icon="ui-icon-home"/>                          
+                <f:facet name="options">                   
+                    <p:commandButton type="button" value="Salir" icon="ui-icon-power" action="index" />
+                </f:facet>
+                <p:menuitem value="Crear encuesta" icon="ui-icon-circle-plus" iconPos="right" outcome="num_preg"/>      
+            </p:menubar>
+        </h:form>
+        <center>  
+        <br></br>
+        <br></br>
+        <h:form>
+        Nombre:
+        <div>#{encuestraController.selected.nombre}</div>
+        <br></br>
+        <br></br>
+        Enlace:
+        <div>#{encuestraController.selected.enlace}</div>
+        <br></br>
+        <br></br>
+        Numero de preguntas:
+        <div>#{encuestraController.selected.noPreguntas}</div>
+        <br></br>
+        <br></br>
+        <!--<p:button value="Regresar" outcome="principal"></p:button>
+        <p:button value="Modificar" outcome="principal"></p:button>
+        <p:commandButton value="Resultados" action="principal"/>
+        <p:button value="Eliminar" outcome="principal"></p:button>-->
+        <p:commandButton id="submit" action="#{preguntasController.modificar}" value="Mostrar"/>
+        <p:commandButton  action="#{encuestraController.eliminar()}" value="Eliminar"/>
+        <p:commandButton  action="#{encuestraController.grafica()}" value="Ver grafica"/>
+        </h:form>
+        </center>
+    </h:body>
+</html>

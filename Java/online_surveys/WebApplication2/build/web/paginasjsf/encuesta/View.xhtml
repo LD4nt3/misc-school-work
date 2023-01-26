@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEncuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_idEncuesta}"/>
+                    <h:outputText value="#{encuestaController.selected.idEncuesta}" title="#{bundle.ViewEncuestaTitle_idEncuesta}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_noPreguntas}"/>
+                    <h:outputText value="#{encuestaController.selected.noPreguntas}" title="#{bundle.ViewEncuestaTitle_noPreguntas}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_enlace}"/>
+                    <h:outputText value="#{encuestaController.selected.enlace}" title="#{bundle.ViewEncuestaTitle_enlace}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_nombre}"/>
+                    <h:outputText value="#{encuestaController.selected.nombre}" title="#{bundle.ViewEncuestaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_fkUsuario}"/>
+                    <h:outputText value="#{encuestaController.selected.fkUsuario}" title="#{bundle.ViewEncuestaTitle_fkUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{encuestaController.destroyAndView}" value="#{bundle.ViewEncuestaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEncuestaEditLink}"/>
+                <br />
+                <h:commandLink action="#{encuestaController.prepareCreate}" value="#{bundle.ViewEncuestaCreateLink}" />
+                <br />
+                <h:commandLink action="#{encuestaController.prepareList}" value="#{bundle.ViewEncuestaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEncuestaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
